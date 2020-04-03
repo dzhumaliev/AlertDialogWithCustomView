@@ -21,15 +21,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun alertDialog() {
+        val displayRectangle = Rect()
+        val window: Window = this@MainActivity.window
+        val builder =
+            AlertDialog.Builder(
+                this@MainActivity
+            ).setCancelable(false)
+        val viewGroup = findViewById<ViewGroup>(R.id.content)
+
         button1.setOnClickListener {
-            val displayRectangle = Rect()
-            val window: Window = this@MainActivity.window
             window.decorView.getWindowVisibleDisplayFrame(displayRectangle)
-            val builder =
-                AlertDialog.Builder(
-                    this@MainActivity
-                ).setCancelable(false)
-            val viewGroup = findViewById<ViewGroup>(R.id.content)
             val dialogView: View =
                 LayoutInflater.from(it.context).inflate(R.layout.customviews, viewGroup, false)
             builder.setView(dialogView)
@@ -40,14 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         button2.setOnClickListener {
-            val displayRectangle = Rect()
-            val window: Window = this@MainActivity.window
             window.decorView.getWindowVisibleDisplayFrame(displayRectangle)
-            val builder =
-                AlertDialog.Builder(
-                    this@MainActivity
-                ).setCancelable(false)
-            val viewGroup = findViewById<ViewGroup>(R.id.content)
             val dialogView: View =
                 LayoutInflater.from(it.context).inflate(R.layout.customview, viewGroup, false)
             builder.setView(dialogView)
